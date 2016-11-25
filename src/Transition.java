@@ -6,13 +6,32 @@ public class Transition {
     private int target;
     private int count;
 
-    public Transition(int source, int target) {
+    Transition(int source, int target) {
         this.source = source;
         this.target = target;
-        count = 1;
+        count = 0;
     }
 
-    public void update(){
+    void update(){
         count++;
+    }
+
+    @Override
+    public int hashCode(){
+        // implements Cantor's pairing function
+        int sum = source + target;
+        return ((sum)*(sum + 1)/2) + target;
+    }
+
+    int getSource() {
+        return source;
+    }
+
+    int getTarget(){
+        return target;
+    }
+
+    int getCount() {
+        return count;
     }
 }

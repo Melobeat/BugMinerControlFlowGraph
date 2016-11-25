@@ -4,14 +4,28 @@
 // terminates, a special invalid edge with isFinished() returning true is
 // returned.
 
-public class Edge {
-	// the method this edge is in
-	public String method;
-	// the last line we executed in this method
-	public int lineFrom;
-	// the line we reached from the last line
-	public int lineTo;
+class Edge {
 
-	boolean isFinished() { return method == ""; }
-	boolean isFirstLine() { return lineFrom == -1; }
+	// the method this edge is in
+	String method;
+
+	// the last line we executed in this method
+	int lineFrom;
+
+	// the line we reached from the last line
+	int lineTo;
+
+	Edge(String method, int lineFrom, int lineTo){
+		this.method = method;
+		this.lineFrom = lineFrom;
+		this.lineTo = lineTo;
+	}
+
+	boolean isFinished() {
+		return method.equals("");
+	}
+
+	boolean isFirstLine() {
+		return lineFrom == -1;
+	}
 }
